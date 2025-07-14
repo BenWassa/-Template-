@@ -10,6 +10,23 @@ if ($PSVersionTable.PSVersion.Major -lt 5) {
 
 Write-Host "✅ PowerShell version OK" -ForegroundColor Green
 
+# Check and fix execution policy if needed
+$currentPolicy = Get-ExecutionPolicy
+Write-Host "Current execution policy: $currentPolicy" -ForegroundColor Gray
+
+if ($currentPolicy -eq "Restricted") {
+    Write-Host "⚠️ PowerShell execution policy is Restricted" -ForegroundColor Yellow
+    Write-Host "Attempting to set execution policy for current user..." -ForegroundColor Yellow
+    
+    try {
+        Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
+        Write-Host "✅ Execution policy updated to RemoteSigned for current user" -ForegroundColor Green
+    } catch {
+        Write-Host "❌ Could not update execution policy. You may need to run as administrator." -ForegroundColor Red
+        Write-Host "Manual fix: Run 'Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser'" -ForegroundColor Yellow
+    }
+}
+
 # Check Python availability
 try {
     $pythonVersion = python --version 2>$null

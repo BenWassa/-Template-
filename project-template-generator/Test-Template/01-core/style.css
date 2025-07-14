@@ -1,0 +1,197 @@
+/* Modern CSS Framework - Based on Project Ares architecture */
+
+/* ========== RESET & BASE ========== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: 'Merriweather', Georgia, serif;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #333;
+    background: #F8F8F8;
+    overflow-x: hidden;
+}
+
+/* ========== TYPOGRAPHY ========== */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Open Sans', Arial, sans-serif;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #2C3E50;
+}
+
+h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 1.5rem; }
+h2 { font-size: 2rem; margin-bottom: 1.2rem; }
+h3 { font-size: 1.5rem; margin-bottom: 1rem; }
+
+p { margin-bottom: 1.2rem; }
+
+a {
+    color: #4682B4;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #6B8E23;
+    text-decoration: underline;
+}
+
+/* ========== LAYOUT ========== */
+.main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(248, 248, 248, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #E0E0E0;
+}
+
+.progress-bar {
+    height: 3px;
+    background: #E0E0E0;
+    position: relative;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #4682B4, #6B8E23);
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+.main-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 80px 2rem 2rem;
+    background: white;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    min-height: 100vh;
+}
+
+/* ========== NAVIGATION ========== */
+.sticky-nav {
+    position: fixed;
+    top: 60px;
+    left: 20px;
+    width: 280px;
+    max-height: calc(100vh - 80px);
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    z-index: 999;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    padding: 1.5rem;
+}
+
+.sticky-nav.active { transform: translateX(0); }
+
+.nav-toggle {
+    position: fixed;
+    top: 15px;
+    left: 20px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    z-index: 1001;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 5px 0;
+}
+
+.nav-toggle span {
+    display: block;
+    height: 3px;
+    background: #333;
+    border-radius: 1px;
+    transition: all 0.3s ease;
+}
+
+.nav-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.nav-toggle.active span:nth-child(2) { opacity: 0; }
+.nav-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
+
+.nav-content ul { list-style: none; }
+.nav-content li { margin-bottom: 0.5rem; }
+.nav-content li a {
+    display: block;
+    padding: 0.5rem 0;
+    color: #555;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.nav-content li a:hover {
+    background: #EDF2F7;
+    padding-left: 0.5rem;
+    text-decoration: none;
+}
+
+/* ========== SECTIONS ========== */
+.section { margin-bottom: 3rem; }
+
+.content-placeholder {
+    background: #F9F9F9;
+    border: 2px dashed #E0E0E0;
+    border-radius: 8px;
+    padding: 2rem;
+    margin: 1rem 0;
+}
+
+/* ========== BACK TO TOP ========== */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: #4682B4;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 999;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #5a94c7;
+    transform: scale(1.1);
+}
+
+/* ========== FOOTER ========== */
+.main-footer {
+    background: #2C3E50;
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    margin-top: 3rem;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+    .main-content { padding: 80px 1rem 1rem; }
+    .sticky-nav { width: 250px; left: -270px; }
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.7rem; }
+}
+
+@media (max-width: 480px) {
+    body { font-size: 1rem; line-height: 1.6; }
+    .main-content { padding: 70px 0.5rem 0.5rem; }
+}

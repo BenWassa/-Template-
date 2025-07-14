@@ -109,19 +109,19 @@ switch ($Type.ToLower()) {
         <section id="section-2" class="section">
             <h2>Getting Started</h2>
             <div class="content-placeholder">
-                <p>1. Edit files in the <code>01-core/</code> folder</p>
-                <p>2. Add assets to <code>02-assets/</code></p>
-                <p>3. Store data in <code>03-content/</code></p>
-                <p>4. Document in <code>04-docs/</code></p>
-                <p>5. Use utilities in <code>05-utilities/</code></p>
+                <p>1. Edit files in the &lt;code&gt;01-core/&lt;/code&gt; folder</p>
+                <p>2. Add assets to &lt;code&gt;02-assets/&lt;/code&gt;</p>
+                <p>3. Store data in &lt;code&gt;03-content/&lt;/code&gt;</p>
+                <p>4. Document in &lt;code&gt;04-docs/&lt;/code&gt;</p>
+                <p>5. Use utilities in &lt;code&gt;05-utilities/&lt;/code&gt;</p>
             </div>
         </section>
 
         <section id="section-3" class="section">
             <h2>Development Tools</h2>
             <div class="content-placeholder">
-                <p>🚀 <strong>Start Server:</strong> Double-click <code>05-utilities\start-server.bat</code></p>
-                <p>📊 <strong>Generate Status:</strong> Double-click <code>05-utilities\generate-status.bat</code></p>
+                <p>🚀 &lt;strong&gt;Start Server:&lt;/strong&gt; Double-click &lt;code&gt;05-utilities\start-server.bat&lt;/code&gt;</p>
+                <p>📊 &lt;strong&gt;Generate Status:&lt;/strong&gt; Double-click &lt;code&gt;05-utilities\generate-status.bat&lt;/code&gt;</p>
             </div>
         </section>
     </main>
