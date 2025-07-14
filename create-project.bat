@@ -36,15 +36,8 @@ echo Type: %PROJECT_TYPE%
 echo Description: %PROJECT_DESC%
 echo.
 
-REM Try PowerShell first
-powershell -ExecutionPolicy Bypass -File "%~dp0create-project.ps1" -Name "%PROJECT_NAME%" -Type "%PROJECT_TYPE%" -Description "%PROJECT_DESC%" -Author "%USERNAME%"
-
-REM If PowerShell fails, fallback to Python
-if errorlevel 1 (
-    echo.
-    echo PowerShell execution failed, trying Python...
-    python "%~dp0create-project-fixed.py" "%PROJECT_NAME%" --type "%PROJECT_TYPE%" --description "%PROJECT_DESC%" --author "%USERNAME%"
-)
+REM Use Python version (reliable cross-platform solution)
+python "%~dp0create-project.py" "%PROJECT_NAME%" --type "%PROJECT_TYPE%" --description "%PROJECT_DESC%" --author "%USERNAME%"
 
 echo.
 echo Project creation complete!

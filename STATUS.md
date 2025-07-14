@@ -5,16 +5,16 @@
 
 ## 🚀 What's Working Perfectly
 
-### ✅ Python Version (Primary - Recommended)
-- **File**: `create-project-fixed.py`
+### ✅ Python Version (Primary & Only)
+- **File**: `create-project.py`
 - **Status**: 🟢 Fully functional and tested
 - **Features**: All project types, Git integration, cross-platform
 - **Test Results**: ✅ Web, React, and Python projects generated successfully
 
 ### ✅ Batch File Wrapper (Windows)
 - **File**: `create-project.bat`
-- **Status**: 🟢 Working with Python fallback
-- **Features**: Easy Windows usage, automatic fallback to Python
+- **Status**: 🟢 Working with Python backend
+- **Features**: Easy Windows usage, uses Python script internally
 
 ### ✅ Development Utilities
 - **Status Generation**: ✅ Working perfectly

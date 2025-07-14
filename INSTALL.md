@@ -21,19 +21,19 @@
 ### Simple Project Creation
 ```bash
 # Create a basic website
-python create-project-fixed.py "My Website"
+python create-project.py "My Website"
 
 # Create a Python project
-python create-project-fixed.py "Data Analysis" --type python
+python create-project.py "Data Analysis" --type python
 
 # Create a React app with Git
-python create-project-fixed.py "Task Manager" --type react --git
+python create-project.py "Task Manager" --type react --git
 ```
 
 ### Full Option Examples
 ```bash
 # Complete web project setup
-python create-project-fixed.py "Portfolio Site" \
+python create-project.py "Portfolio Site" \
     --type web \
     --description "Personal portfolio and blog" \
     --author "John Doe" \
@@ -41,7 +41,7 @@ python create-project-fixed.py "Portfolio Site" \
     --git
 
 # Node.js API project
-python create-project-fixed.py "User API" \
+python create-project.py "User API" \
     --type node \
     --description "RESTful user management API" \
     --author "Jane Smith" \
@@ -53,7 +53,7 @@ python create-project-fixed.py "User API" \
 # Simple usage
 create-project.bat "My Project" web "Project description"
 
-# The batch file automatically tries PowerShell first, then falls back to Python
+# The batch file uses the Python script internally for reliability
 ```
 
 ## 📁 Project Types Available
@@ -85,7 +85,7 @@ Every project includes these utilities:
 
 ### 1. Create Project
 ```bash
-python create-project-fixed.py "My App" --type react --git
+python create-project.py "My App" --type react --git
 cd My-App
 ```
 
@@ -185,7 +185,7 @@ python 05-utilities/scripts/serve.py --port 8080
 ## 📚 Advanced Usage
 
 ### Custom Templates
-Modify `create-project-fixed.py` to add new project types:
+Modify `create-project.py` to add new project types:
 
 ```python
 # Add to the project_types dictionary
@@ -210,7 +210,7 @@ export TEMPLATE_DEFAULT_TYPE="web"
 # GitHub Actions example
 - name: Generate Project
   run: |
-    python create-project-fixed.py "${{ github.event.inputs.project_name }}" \
+    python create-project.py "${{ github.event.inputs.project_name }}" \
       --type "${{ github.event.inputs.project_type }}" \
       --git
 ```
@@ -220,7 +220,7 @@ export TEMPLATE_DEFAULT_TYPE="web"
 The Universal Project Template Generator is now fully operational. Start creating structured, professional projects in seconds:
 
 ```bash
-python create-project-fixed.py "Amazing Project" --type web --git
+python create-project.py "Amazing Project" --type web --git
 ```
 
 Happy coding! 🚀
