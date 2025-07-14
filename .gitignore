@@ -1,0 +1,46 @@
+# Universal Project Template Generator .gitignore
+
+# Test projects created during development
+*Test*
+*-test/
+*-Test/
+Test-*/
+test-*/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Temporary files
+*.tmp
+*.temp
+*~
+
+# Any generated projects (except examples)
+!/examples/
+/[A-Z]*-[A-Z]*/
+/[a-z]*-[a-z]*/

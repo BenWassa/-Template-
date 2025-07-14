@@ -38,31 +38,32 @@ try {
             Write-Host "✅ Python3 found: $pythonVersion" -ForegroundColor Green
         } else {
             Write-Host "⚠️ Python not found in PATH" -ForegroundColor Yellow
-            Write-Host "💡 You can still use the PowerShell script" -ForegroundColor Gray
+            Write-Host "💡 Please install Python 3.6+ from python.org" -ForegroundColor Gray
         }
     }
 } catch {
     Write-Host "⚠️ Python not available" -ForegroundColor Yellow
 }
 
-# Test the PowerShell script
-Write-Host "🧪 Testing PowerShell script..." -ForegroundColor Cyan
+# Test the Python script (recommended method)
+Write-Host "🧪 Testing Python script..." -ForegroundColor Cyan
 
 try {
     # Test creating a sample project
     Write-Host "📝 Creating test project..." -ForegroundColor Gray
-    .\create-project.ps1 -Name "Test Project" -Type "web" -Description "Test project for validation" -Author "Test User" -Email "test@example.com"
+    python create-project.py "Setup-Test" --type web --description "Setup validation test" --author "Setup Script"
     
-    if (Test-Path "Test-Project") {
-        Write-Host "✅ Test project created successfully!" -ForegroundColor Green
+    if (Test-Path "Setup-Test") {
+        Write-Host "✅ Python script working perfectly!" -ForegroundColor Green
         Write-Host "🧹 Cleaning up test project..." -ForegroundColor Gray
-        Remove-Item -Path "Test-Project" -Recurse -Force
+        Remove-Item -Path "Setup-Test" -Recurse -Force
     } else {
-        Write-Host "❌ Test project creation failed" -ForegroundColor Red
+        Write-Host "❌ Python script test failed" -ForegroundColor Red
         exit 1
     }
 } catch {
-    Write-Host "❌ PowerShell script test failed: $($_.Exception.Message)" -ForegroundColor Red
+    Write-Host "❌ Python script test failed: $($_.Exception.Message)" -ForegroundColor Red
+    Write-Host "💡 Make sure Python 3.6+ is installed and in your PATH" -ForegroundColor Yellow
     exit 1
 }
 
@@ -70,9 +71,10 @@ Write-Host ""
 Write-Host "🎉 Setup complete!" -ForegroundColor Green
 Write-Host ""
 Write-Host "📋 Usage Examples:" -ForegroundColor Cyan
-Write-Host "  .\create-project.ps1 -Name 'My Website' -Type 'web' -Git" -ForegroundColor White
-Write-Host "  .\create-project.ps1 -Name 'Data Analysis' -Type 'python' -Author 'Your Name'" -ForegroundColor White
-Write-Host "  python create-project-fixed.py 'My Project' --type web --git" -ForegroundColor White
+Write-Host "  python create-project.py 'My Website' --type web --git" -ForegroundColor White
+Write-Host "  python create-project.py 'Data Analysis' --type python --author 'Your Name'" -ForegroundColor White  
+Write-Host "  create-project.bat 'My Project' web 'Description'  # Windows easy mode" -ForegroundColor White
 Write-Host ""
-Write-Host "🎯 Available types: web, python, node, react" -ForegroundColor Gray
+Write-Host "🎯 Available types: web, python, node, react, django, api, docs" -ForegroundColor Gray
 Write-Host "📖 See README.md for full documentation" -ForegroundColor Gray
+Write-Host "🚀 Ready to create amazing projects!" -ForegroundColor Green
