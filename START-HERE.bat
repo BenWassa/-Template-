@@ -60,13 +60,15 @@ echo [1] Web (HTML/CSS/JS website)
 echo [2] Python (Python application)
 echo [3] Node (Node.js application)
 echo [4] React (React application)
+echo [5] Docs (Documentation project)
 echo.
-set /p type_choice="Choose project type (1-4): "
+set /p type_choice="Choose project type (1-5): "
 
 if "%type_choice%"=="1" set "project_type=web"
 if "%type_choice%"=="2" set "project_type=python"
 if "%type_choice%"=="3" set "project_type=node"
 if "%type_choice%"=="4" set "project_type=react"
+if "%type_choice%"=="5" set "project_type=docs"
 
 if "%project_type%"=="" (
     echo Invalid project type!
@@ -127,15 +129,13 @@ echo WEB.......... HTML/CSS/JavaScript website
 echo PYTHON....... Python application with virtual environment
 echo NODE......... Node.js application with package.json
 echo REACT........ React application with modern setup
+echo DOCS......... Documentation project with MkDocs
 echo.
 echo Each project includes:
 echo - Professional folder structure (01-core, 02-assets, etc.)
 echo - README with setup instructions
 echo - Git repository initialization
 echo - Development utilities and scripts
-echo.
-echo Note: Additional project types (Django, API, Documentation)
-echo will be added in future versions.
 echo.
 pause
 goto MENU

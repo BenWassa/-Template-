@@ -61,6 +61,8 @@ def create_project(name, project_type="web", description="", author="", email=""
         create_node_files(name, safe_name, description, author, email)
     elif project_type == "react":
         create_react_files(name, safe_name, description, author, email)
+    elif project_type == "docs":
+        create_docs_files(name, safe_name, description, author, email)
     
     # Create universal files
     create_readme(name, safe_name, project_type, description, author, email)
@@ -96,6 +98,10 @@ def create_project(name, project_type="web", description="", author="", email=""
     elif project_type in ["node", "react"]:
         print("  2. Install dependencies: cd 01-core && npm install")
         print("  3. Start development: npm start")
+    elif project_type == "docs":
+        print("  2. Install dependencies: cd 01-core && pip install -r requirements.txt")
+        print("  3. Start development: cd 01-core && mkdocs serve")
+        print("  4. Build documentation: cd 01-core && mkdocs build")
     
     print("  📊 Generate status: python 05-utilities/scripts/repo-status/generate_status.py")
     print("\n📖 See README.md for full instructions")
@@ -651,6 +657,140 @@ def create_react_files(name, safe_name, description, author, email):
     # Create React component files (simplified to save space)
     # App.js, index.js, CSS files etc. would go here
 
+def create_docs_files(name, safe_name, description, author, email):
+    """Create documentation project files using MkDocs"""
+    
+    # Create docs directory structure first
+    docs_dir = Path("01-core/docs")
+    docs_dir.mkdir(parents=True, exist_ok=True)
+    
+    # MkDocs requirements
+    requirements_txt = """mkdocs>=1.5.0
+mkdocs-material>=9.0.0
+pymdown-extensions>=10.0.0
+"""
+    Path("01-core/requirements.txt").write_text(requirements_txt, encoding='utf-8')
+    
+    # Simple MkDocs configuration
+    mkdocs_yml = f"""site_name: {name}
+site_description: {description}
+site_author: {author}
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: blue
+    - scheme: slate
+      primary: blue
+
+plugins:
+  - search
+
+markdown_extensions:
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - admonition
+
+nav:
+  - Home: index.md
+  - Getting Started: getting-started.md
+  - User Guide: user-guide.md
+"""
+    Path("01-core/mkdocs.yml").write_text(mkdocs_yml, encoding='utf-8')
+    
+    # Simple documentation index
+    index_content = f"""# {name}
+
+{description}
+
+## Welcome
+
+Welcome to the {name} documentation site.
+
+## Quick Start
+
+1. Install dependencies: `pip install -r requirements.txt`
+2. Start development server: `mkdocs serve`
+3. Build documentation: `mkdocs build`
+
+## Features
+
+- Professional documentation with MkDocs
+- Material theme for modern appearance
+- Search functionality
+- Responsive design
+
+## Contact
+
+Author: {author}
+Email: {email}
+"""
+    Path("01-core/docs/index.md").write_text(index_content, encoding='utf-8')
+    
+    # Getting started guide
+    getting_started = f"""# Getting Started
+
+## Installation
+
+1. Install Python 3.8 or higher
+2. Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+## Development
+
+Start the development server:
+
+```bash
+mkdocs serve
+```
+
+Visit http://localhost:8000 to view the documentation.
+
+## Building
+
+Build the static site:
+
+```bash
+mkdocs build
+```
+
+The generated site will be in the `site/` directory.
+"""
+    Path("01-core/docs/getting-started.md").write_text(getting_started, encoding='utf-8')
+    
+    # User guide
+    user_guide = """# User Guide
+
+## Overview
+
+This documentation site is built with MkDocs and the Material theme.
+
+## Writing Documentation
+
+- Create new `.md` files in the `docs/` directory
+- Add them to the navigation in `mkdocs.yml`
+- Use Markdown syntax for formatting
+
+## Features
+
+- Code syntax highlighting
+- Admonitions for notes and warnings
+- Search functionality
+- Responsive design
+
+## Tips
+
+- Keep pages focused and well-organized
+- Use clear headings and sections
+- Include code examples where helpful
+- Test your documentation locally before publishing
+"""
+    Path("01-core/docs/user-guide.md").write_text(user_guide, encoding='utf-8')
+
 def create_readme(name, safe_name, project_type, description, author, email):
     """Create universal README file"""
     
@@ -1042,7 +1182,7 @@ Thumbs.db"""
 def main():
     parser = argparse.ArgumentParser(description="Universal Project Template Generator")
     parser.add_argument("name", help="Project name")
-    parser.add_argument("--type", choices=["web", "python", "node", "react"], 
+    parser.add_argument("--type", choices=["web", "python", "node", "react", "docs"], 
                        default="web", help="Project type")
     parser.add_argument("--description", default="", help="Project description")
     parser.add_argument("--author", default=os.getenv('USER', 'Your Name'), help="Author name")
