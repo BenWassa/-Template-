@@ -58,7 +58,7 @@ foreach ($folder in $folders) {
 switch ($Type.ToLower()) {
     "web" {
         # HTML5 starter with Project Ares structure
-        @"
+        $htmlContent = @"
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -109,19 +109,19 @@ switch ($Type.ToLower()) {
         <section id="section-2" class="section">
             <h2>Getting Started</h2>
             <div class="content-placeholder">
-                <p>1. Edit files in the &lt;code&gt;01-core/&lt;/code&gt; folder</p>
-                <p>2. Add assets to &lt;code&gt;02-assets/&lt;/code&gt;</p>
-                <p>3. Store data in &lt;code&gt;03-content/&lt;/code&gt;</p>
-                <p>4. Document in &lt;code&gt;04-docs/&lt;/code&gt;</p>
-                <p>5. Use utilities in &lt;code&gt;05-utilities/&lt;/code&gt;</p>
+                <p>1. Edit files in the 01-core/ folder</p>
+                <p>2. Add assets to 02-assets/</p>
+                <p>3. Store data in 03-content/</p>
+                <p>4. Document in 04-docs/</p>
+                <p>5. Use utilities in 05-utilities/</p>
             </div>
         </section>
 
         <section id="section-3" class="section">
             <h2>Development Tools</h2>
             <div class="content-placeholder">
-                <p>🚀 &lt;strong&gt;Start Server:&lt;/strong&gt; Double-click &lt;code&gt;05-utilities\start-server.bat&lt;/code&gt;</p>
-                <p>📊 &lt;strong&gt;Generate Status:&lt;/strong&gt; Double-click &lt;code&gt;05-utilities\generate-status.bat&lt;/code&gt;</p>
+                <p>🚀 Start Server: Double-click 05-utilities\start-server.bat</p>
+                <p>📊 Generate Status: Double-click 05-utilities\generate-status.bat</p>
             </div>
         </section>
     </main>
@@ -137,7 +137,8 @@ switch ($Type.ToLower()) {
     <script src="script.js"></script>
 </body>
 </html>
-"@ | Out-File -FilePath "01-core/index.html" -Encoding UTF8
+"@
+        $htmlContent | Out-File -FilePath "01-core/index.html" -Encoding UTF8
 
         # Modern CSS framework (simplified Project Ares styles)
         @"
