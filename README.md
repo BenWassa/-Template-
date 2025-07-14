@@ -4,21 +4,25 @@ A flexible, cross-platform system for creating structured projects with built-in
 
 ## 🚀 Quick Start
 
-### Option 1: Python (Cross-Platform - Recommended)
+### Super Simple - Just Double-Click
+```
+START-HERE.bat
+```
+The interactive menu will guide you through everything!
+
+### Option 1: Python (Cross-Platform)
 ```bash
 # Create new project
-python create-project.py "My Website" --type web --author "Your Name" --git
+python core/create-project.py "My Website" --type web --author "Your Name" --git
 
 # Or with full options  
-python create-project.py "Data Analysis" --type python --description "ML project" --author "John Doe" --email "john@example.com" --git
+python core/create-project.py "Data Analysis" --type python --description "ML project" --author "John Doe" --email "john@example.com" --git
 ```
 
-### Option 2: Windows Batch File (Easy)
+### Option 2: Windows Batch File (Advanced)
 ```cmd
-# Simple usage
-create-project.bat "My Website" web "A cool website"
-
-# The batch file uses the Python script internally
+# Advanced usage
+core/create-project.bat "My Website" web "A cool website"
 ```
 
 ## 📁 What You Get
